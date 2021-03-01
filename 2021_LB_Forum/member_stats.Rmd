@@ -152,6 +152,22 @@ fig3
 
 ### Waffle Chart
 ```{r}
+lang.vec <- lang.count$count
+names(lang.vec) <- lang.count$Language
 
+colors.waffle <- c(brewer.pal(n = 8, name = "RdYlBu"), brewer.pal(n = 8, name = "PRGn"))
+
+fig4 <- waffle(lang.vec, rows = 13, colors = colors.waffle)
+
+fig5 <- waffle(lang.vec, 
+               rows = 13, 
+               size = 1, 
+               colors = colors.waffle, 
+               title = "CLSAS Language Participation",
+               reverse = TRUE,
+               flip = TRUE) +
+  theme(legend.text = element_text(size = 15))
+
+fig5
 ```
 
