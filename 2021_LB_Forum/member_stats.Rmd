@@ -31,11 +31,18 @@ library(extrafont)
 
 ## Data Read-in
 ```{r}
-legacy.df <- read_csv(file.path(data.dir, 'old_members.csv'))
+legacy.df <- read_csv(file.path(data.dir, 'old_members.csv')) %>% 
+  slice_head(n = 322)
 fresh.df <- read_csv(file.path(data.dir, '2019-2021_members.csv'))
 ```
+
 # Analysis
 
 ## Side-by-Side Bar Plot
 
-### Playground
+### Data restructuring
+
+```{r}
+
+```
+
