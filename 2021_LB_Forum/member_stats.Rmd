@@ -22,6 +22,8 @@ library(tidyverse)
 library(plotly)
 #install.packages('extrafont')
 library(extrafont)
+#install.packages('RColorBrewer')
+library(RColorBrewer)
 
 
 #font_import()
