@@ -24,8 +24,8 @@ library(plotly)
 library(extrafont)
 #install.packages('RColorBrewer')
 library(RColorBrewer)
-
-
+#install.packages('waffle')
+library(waffle)
 #font_import()
 #loadfonts(device="win") 
 ```
@@ -87,7 +87,7 @@ lang.count <- lang.all %>%
   mutate(Language = fct_reorder(Language, count))
 ```
 
-### Plot
+### Bar Plot
 ```{r}
 fig <- lang.count %>% ggplot(aes(x = Language, y =count)) +
   geom_bar(aes(),
@@ -132,5 +132,26 @@ fig2 <- lang.count %>% ggplot(aes(x = Language, y =count)) +
         legend.position = "none")
   
 fig2
+```
+
+### Piechart (Scrapped)
+```{r}
+lang.count.alpha <- lang.all %>% 
+  group_by(Language) %>% 
+  summarise(count = sum(n))
+
+fig3 <- lang.count.alpha %>% 
+  ggplot(aes(x="", y=count, fill=Language)) +
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  theme_void()
+
+fig3
+
+```
+
+### Waffle Chart
+```{r}
+
 ```
 
