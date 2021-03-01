@@ -110,5 +110,27 @@ fig <- lang.count %>% ggplot(aes(x = Language, y =count)) +
 
 
 fig
+
+fig2 <- lang.count %>% ggplot(aes(x = Language, y =count)) +
+  geom_bar(aes(),
+           fill = cls.color,
+           position = position_dodge(width = 1), 
+           stat = "identity") +
+  labs(title = "CLSAS Language Participation",
+       subtitle = "How many CLSAS members studied each critical language?") +
+  geom_text(aes(label=count), position=position_dodge(width=0.9), hjust=0) +
+  ylab("Number of members") +
+  xlab("") +
+  scale_y_continuous(breaks = seq(0,130,10)) +
+  coord_flip() + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12),
+        plot.title = element_text(size = 24, face = 'bold'),
+        plot.subtitle = element_text(size = 16, face = 'italic'),
+        text = element_text(family = "Yu Mincho Demibold"),
+        legend.position = "none")
+  
+fig2
 ```
 
