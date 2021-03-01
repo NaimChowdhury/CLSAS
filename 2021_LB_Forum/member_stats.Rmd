@@ -43,6 +43,32 @@ fresh.df <- read_csv(file.path(data.dir, '2019-2021_members.csv'))
 ### Data restructuring
 
 ```{r}
+# Issue 1: Remove repeated members
+# RESOLVED Issue 2: Pull all language rows, removing NAs and repeated languages for a single person
+# Issue 3: stack resulting language rows
+# Issue 4: Group_by summarize count
+
+lang.old.1 <- legacy.df %>% 
+  select(`What CLS Language did you study?`) %>% 
+  drop_na() %>% 
+  rename(Language = `What CLS Language did you study?`)
+
+lang.old.2 <- legacy.df %>%
+  filter(`What CLS Language did you study?` != `What CLS Language did you study?_1`) %>% 
+  select(`What CLS Language did you study?_1`) %>% 
+  drop_na() %>% 
+  rename(Language = `What CLS Language did you study?_1`)
+
+lang.new.1 <- fresh.df %>% 
+  select(`What CLS Language did you study?`) %>% 
+  drop_na() %>% 
+  rename(Language = `What CLS Language did you study?`)
+
+lang.new.2 <- fresh.df %>% 
+  filter(`What CLS Language did you study?` != `What CLS Language did you study?_1`) %>% 
+  select(`What CLS Language did you study?_1`) %>% 
+  drop_na() %>% 
+  rename(Language = `What CLS Language did you study?_1`)
 
 ```
 
